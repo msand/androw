@@ -19,15 +19,13 @@ const instructions = Platform.select({
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { toggled: false };
+    this.state = { toggled: true };
   }
   onPress() {
-    console.log('onPress');
     this.setState({ toggled: !this.state.toggled });
   }
   render() {
-    const shadowStyle = this.state.toggled ? styles.shadow : styles.noShadow;
-    console.log(shadowStyle);
+    const shadowStyle = true || this.state.toggled ? styles.shadow : styles.noShadow;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
@@ -36,14 +34,15 @@ export default class App extends Component {
         </Text>
         <Text style={styles.instructions}>{instructions}</Text>
 
-        <Androw style={shadowStyle}>
+        <Androw style={shadowStyle}
+                useRenderScript={this.state.toggled}>
           <View
             style={{
               width: 50,
               height: 50,
               borderRadius: 999,
               marginTop: 10,
-              backgroundColor: '#00ff00',
+              backgroundColor: this.state.toggled ? '#0000FF' : '#00ff00',
             }}
           />
           <View
@@ -92,12 +91,12 @@ const styles = StyleSheet.create({
   shadow: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    shadowColor: '#000',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowColor: '#00f',
+    shadowOpacity: 1,
+    shadowRadius: 25,
     shadowOffset: {
-      width: 0,
-      height: 0,
+      width: 10,
+      height: 10,
     },
   },
 });

@@ -39,4 +39,9 @@ public class RNAndrowManager extends ViewGroupManager<RNAndrowLayout> {
     public void setShadowRadius(RNAndrowLayout view, Dynamic radius) {
         view.setShadowRadius(radius);
     }
+
+    @ReactProp(name = "useRenderScript")
+    public void setUseRenderScript(RNAndrowLayout view, boolean flag) {
+        view.setUseRenderScript(flag);
+    }
 }
